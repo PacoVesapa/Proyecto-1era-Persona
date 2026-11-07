@@ -25,6 +25,11 @@ namespace StarterAssets
 		public GameObject proyectilPrefab;
 		public Transform proyectilSpawnPoint;
 		public float ShootForce = 20f;
+		private void Start()
+		{
+			jugadorMuerto = false;
+			SetCursorState(cursorLocked);
+		}
 #if ENABLE_INPUT_SYSTEM
         public void OnMove(InputValue value)
 		{
@@ -91,12 +96,17 @@ namespace StarterAssets
 		
 		private void OnApplicationFocus(bool hasFocus)
 		{
+			if (jugadorMuerto)
+			{
+				return;
+			}
 			SetCursorState(cursorLocked);
 		}
 
 		private void SetCursorState(bool newState)
 		{
-			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+            Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+			Cursor.visible = !newState;
 		}
 	}
 	

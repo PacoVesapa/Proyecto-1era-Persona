@@ -97,7 +97,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5654627901233247938
 Transform:
   m_ObjectHideFlags: 0
@@ -209,11 +209,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   health: 100
+  waveManager: {fileID: 0}
   HealthText: {fileID: 4435846976812504678}
   healthbar: {fileID: 3959157262926223897}
   enemyAnimator: {fileID: 0}
   agent: {fileID: -3416306097812555807}
   totalhealth: 100
+  hitbox: {fileID: 0}
 --- !u!195 &-3416306097812555807
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -131,6 +131,8 @@ public class PlayerDamage : MonoBehaviour
         StopAllCoroutines();
         curacion = null;
         panelDerrota.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0f;
     }
 }

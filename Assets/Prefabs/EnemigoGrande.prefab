@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 1371821860405996628}
   m_Layer: 0
   m_Name: EnemigoGrande
-  m_TagString: Untagged
+  m_TagString: BigEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,8 +210,8 @@ Transform:
   m_GameObject: {fileID: 6471775353600046431}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.61, y: 0, z: 3.39}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 5.6187, y: 0.75067, z: 3.4005}
+  m_LocalScale: {x: 1.4526058, y: 1.4526058, z: 1.4526058}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5340950147716544263}
@@ -324,11 +324,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReceiveDamage
   health: 200
+  waveManager: {fileID: 0}
   HealthText: {fileID: 8246735365189478595}
   healthbar: {fileID: 8606916659235357487}
   enemyAnimator: {fileID: 0}
   agent: {fileID: 0}
   totalhealth: 200
+  hitbox: {fileID: 0}
 --- !u!136 &1371821860405996628
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -344,7 +346,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

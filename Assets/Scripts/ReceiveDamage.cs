@@ -4,10 +4,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using static GeneradorDeOleadas;
 
 public class ReceiveDamage : MonoBehaviour
 {
     public int health = 100;
+    [HideInInspector] public GeneradorDeOleadas waveManager;
     public TextMeshProUGUI HealthText;
     public Image healthbar;
     public Animator enemyAnimator;
@@ -46,6 +48,10 @@ public class ReceiveDamage : MonoBehaviour
     }
     public IEnumerator Death()
     {
+        if (waveManager != null)
+        {
+            waveManager.EnemyDied();
+        }
         hitbox.enabled = false;
         agent.speed = 0;
         enemyAnimator.SetBool("IsDead", true);
