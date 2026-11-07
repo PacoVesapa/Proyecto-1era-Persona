@@ -1,4 +1,4 @@
-# 1era y 3era Persona
+# Proyecto 1era Persona
 
 Paco Vesco Aparicio
 
@@ -6,5 +6,5 @@ Paco Vesco Aparicio
 
 
 
-Proyecto educativo de mecánicas en 1era y 3era persona en Unity
+Proyecto educativo de mecánicas en 1era persona en Unity. Juego de Disparos Básico con enemigos inteligentes y animados
 
