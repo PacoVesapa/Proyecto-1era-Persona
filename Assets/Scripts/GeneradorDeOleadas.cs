@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class GeneradorDeOleadas : MonoBehaviour
@@ -12,13 +13,14 @@ public class GeneradorDeOleadas : MonoBehaviour
 
     [Header("Estado de la Ronda")]
     public int currentRound = 0;           // Ronda actual
+    public TMP_Text TextoRonda;                     // Texto que muestra la ronda actual
     public int enemiesLeft;                // Enemigos que quedan vivos en la ronda
-
+    public TMP_Text TextoEnemigos;                  // Texto que muestra los enemigos restantes
     private int enemiesToSpawn;            // Cuántos enemigos se crearán en esta ronda
     private int enemiesSpawnedSoFar;       // Cuántos se han creado ya
     private float spawnInterval = 2.0f;    // Tiempo entre el spawn de cada enemigo
     private bool isSpawning = false;
-
+    public GameObject PanelVictoria; // Panel de victoria
     void Start()
     {
         NextRound();
@@ -27,20 +29,27 @@ public class GeneradorDeOleadas : MonoBehaviour
     void Update()
     {
         // Si no está spawneando y ya no quedan enemigos, empieza la siguiente ronda
-        if (!isSpawning && enemiesLeft <= 0)
+        if (!isSpawning && enemiesLeft <= 0 && currentRound < 5)
         {
             NextRound();
+        }
+        else if (currentRound >= 5 && enemiesLeft <= 0)
+        {
+            Debug.Log("¡Has ganado!");
+            PanelVictoria.SetActive(true);
+            Time.timeScale = 0f; // Pausa el juego
         }
     }
 
     void NextRound()
     {
         currentRound++;
-
+        TextoRonda.text = "Ronda: " + currentRound + "/5";
         // Fórmula estilo CoD: Cada ronda hay más enemigos que la anterior
         enemiesToSpawn = Mathf.RoundToInt(currentRound * 3.5f + 5);
         enemiesLeft = enemiesToSpawn;
         enemiesSpawnedSoFar = 0;
+        ActualizarTextoEnemigos();
 
         Debug.Log("Iniciando Ronda: " + currentRound + " | Enemigos totales: " + enemiesToSpawn);
 
@@ -93,5 +102,11 @@ public class GeneradorDeOleadas : MonoBehaviour
     public void EnemyDied()
     {
         enemiesLeft--;
+        ActualizarTextoEnemigos();
+    }
+
+    public void ActualizarTextoEnemigos()
+    {
+        TextoEnemigos.text = "Enemigos restantes: " + enemiesLeft;
     }
 }
